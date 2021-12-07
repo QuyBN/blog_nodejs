@@ -5,8 +5,13 @@ const morgan = require('morgan');
 const hbs = require('express-handlebars');
 const app = express();
 const port = 3000;
+const route = require ('./routes')
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({
+  extended:true
+}));
+app.use(express.json());
 
 // var hbs = handlebars.create({
 //   helpers: {
@@ -35,13 +40,8 @@ app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'resoures//views'))
 console.log('PATH: ', path.join(__dirname, 'views'))
 
-app.get('/', (req, res) => {
-  res.render('home');
-})
-
-app.get('/news', (req, res) => {
-  res.render('news');
-})
+//route innit
+ route(app);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
