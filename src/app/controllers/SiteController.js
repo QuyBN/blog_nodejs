@@ -7,7 +7,7 @@ class SiteController {
     //[GET] news/:slug
 
     search(req, res) {
-               res.render('search');
+        res.render('search');
     }
 }
 
