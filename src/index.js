@@ -1,16 +1,18 @@
-const path = require('path')
+const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 // const handlebars = require('express-handlebars');
 const hbs = require('express-handlebars');
 const app = express();
 const port = 3000;
-const route = require ('./routes')
+const route = require('./routes');
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({
-  extended:true
-}));
+app.use(
+    express.urlencoded({
+        extended: true,
+    }),
+);
 app.use(express.json());
 
 // var hbs = handlebars.create({
@@ -34,15 +36,22 @@ app.use(express.json());
 app.use(morgan('combined'));
 // hbs.engine
 // app.engine('hbs',hbs.engine);
-app.engine('hbs', hbs.create({extname: 'hbs', defaultLayout: 'main', layoutDir: __dirname + '/views/layouts'}).engine);
+app.engine(
+    'hbs',
+    hbs.create({
+        extname: 'hbs',
+        defaultLayout: 'main',
+        layoutDir: __dirname + '/views/layouts',
+    }).engine,
+);
 app.set('view engine', 'hbs');
 
-app.set('views',path.join(__dirname,'resoures//views'))
-console.log('PATH: ', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'resoures//views'));
+console.log('PATH: ', path.join(__dirname, 'views'));
 
 //route innit
- route(app);
+route(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+    console.log(`Example app listening at http://localhost:${port}`);
+});
