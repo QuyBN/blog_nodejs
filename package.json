@@ -27,7 +27,7 @@
     "express-handlebars": "^6.0.2"
   },
   "lint-staged": {
-    "src/**/*.(js,json,scss)": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
+    "src/**/*.scss": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
 
   "devDependencies": {
